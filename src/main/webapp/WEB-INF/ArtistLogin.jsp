@@ -12,14 +12,14 @@
 </head>
 <body>
     <h1>Welcome To ___</h1>
-    <form:form action="/artistLogin">
+    <form:form action="/artistLogin" method="post">
         <p>
-            Email: <input type="email" name="email">
+            Email: <input type="email" id="email" name="email">
         </p>
         <p>
-            Password: <input type="password" name="password">
+            Password: <input type="password" id="password" name="password">
         </p>
-        <button type="submit">Login</button>
+        <input type="submit" value="Login"/>
 
         <p>Are you an artist? Register here to get connected with potential clients!</p>
         <a href="/artistRegistration">Artist Registration</a>

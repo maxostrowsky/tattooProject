@@ -15,10 +15,10 @@
 <body>
     <div class="container">
         <div class="navBar">
-            <h1>Welcome, ${ userName }!</h1>
+            <h1>Welcome, ${ firstName }!</h1>
             <div class="naLinks">
                 <a href="">New Tattoo</a>
-                <a href="">Logout</a>
+                <a href="/logout">Logout</a>
             </div>
         </div>
         <h2>These artists in your area specialize in your preferred styles:</h2>

@@ -12,7 +12,7 @@
 </head>
 <body>
     <h1>Welcome To ___</h1>
-    <form:form action="/UserLogin">
+    <form:form action="/userLogin">
         <p>
             Email: <input type="email" name="email">
         </p>
