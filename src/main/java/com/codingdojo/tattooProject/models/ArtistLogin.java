@@ -31,7 +31,6 @@ public class ArtistLogin {
     public void setPassword(String password) {
     	this.password = password;
     }
-    // TODO - Don't forget to generate getters and setters
     
 
 }

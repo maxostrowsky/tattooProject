@@ -35,7 +35,7 @@ public class UserController {
         User user = homeServ.loginUser(newUserLogin, result);
         if(result.hasErrors()) {
             model.addAttribute("newUserLogin", new UserLogin());
-            return "login.jsp";
+            return "UserLogin.jsp";
         }
         session.setAttribute("user_id", user.getId());
         session.setAttribute("firstName", user.getFirstName());

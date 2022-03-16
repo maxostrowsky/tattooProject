@@ -38,10 +38,15 @@ public class ArtistController {
     	Artist artist = homeServ.loginArtist(newArtistLogin, result);
         if(result.hasErrors()) {
             model.addAttribute("newArtistLogin", new ArtistLogin());
-            return "login.jsp";
-        }
+            return "ArtistLogin.jsp";
+        }else {
         session.setAttribute("artist_id", artist.getId());
+        session.setAttribute("firstName", artist.getFirstName());
+        session.setAttribute("lastName", artist.getLastName());
+        session.setAttribute("phoneNumber", artist.getPhoneNumber());
+        session.setAttribute("shop", artist.getShop());
         return "redirect:/profilePage";
+        }
     }
     
 	@GetMapping("/artistRegistration")
@@ -101,12 +106,12 @@ public class ArtistController {
 	}
 	
 	@GetMapping("/profilePage")
-	public String profilePage(Long id, Model model, HttpSession session) {
+	public String profilePage(String email, Model model, HttpSession session) {
 		if(session.getAttribute("artist_id")==null) {
 			return"redirect:/artistStyle";
 		}
-		System.out.println(id);
-		Artist artist = homeServ.oneArtist(id);
+		System.out.println(email);
+		Artist artist = homeServ.oneArtist(email);
 		model.addAttribute("artist", artist);
 		return "ProfilePage.jsp";
 	}
