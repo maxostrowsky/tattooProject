@@ -101,12 +101,12 @@ public class ArtistController {
 	}
 	
 	@GetMapping("/profilePage")
-	public String profilePage(Long id, Model model, HttpSession session) {
+	public String profilePage(String email, Model model, HttpSession session) {
 		if(session.getAttribute("artist_id")==null) {
 			return"redirect:/artistStyle";
 		}
-		System.out.println(id);
-		Artist artist = homeServ.oneArtist(id);
+		System.out.println(email);
+		Artist artist = homeServ.oneArtist(email);
 		model.addAttribute("artist", artist);
 		return "ProfilePage.jsp";
 	}

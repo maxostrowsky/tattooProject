@@ -15,12 +15,12 @@
 <body>
     <div class="container">
         <div class="rightSide">
-            <h1>${ artist.Name }</h1>
-            <h2>${ artist.Shop }</h2>
-            <h3>${ artist.Address }</h3>
-            <p>Cell: ${ artist.Phone }</p>
+            <h1>${ artists.firstName }${ artist.lastName }</h1>
+            <h2>${ artists.shop.name }</h2>
+            <h3>${ shop.Address }</h3>
+            <p>Cell: ${ artist.phoneNumber }</p>
             <h3>Specializes in:</h3>
-            <c:forEach var="talent" items="${ talents }">
+            <c:forEach var="talent" items="${ artist.style }">
                 <p>-
                     <c:out value="${ talent }" />
                 </p>
@@ -28,7 +28,7 @@
         </div>
         <div class="leftSide">
             <div class="firstRow">
-                <p>${ artistAddress }</p>
+                <p>${ artist.shop.address }</p>
                 <a href="/dashboard">Dashboard</a>
                 <a href="/">Logout</a>
             </div>

@@ -121,8 +121,8 @@ public class HomeService {
 		return artistRepo.save(artist);
 	}
     
-	public Artist oneArtist(Long id) {
-		Optional<Artist> artists = artistRepo.findById(id);
+	public Artist oneArtist(String email) {
+		Optional<Artist> artists = artistRepo.findByEmail(email);
 		if(artists.isPresent()) {
 			return artists.get();
 		} else {
