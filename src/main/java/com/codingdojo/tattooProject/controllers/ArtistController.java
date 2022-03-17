@@ -38,10 +38,15 @@ public class ArtistController {
     	Artist artist = homeServ.loginArtist(newArtistLogin, result);
         if(result.hasErrors()) {
             model.addAttribute("newArtistLogin", new ArtistLogin());
-            return "login.jsp";
-        }
+            return "ArtistLogin.jsp";
+        }else {
         session.setAttribute("artist_id", artist.getId());
+        session.setAttribute("firstName", artist.getFirstName());
+        session.setAttribute("lastName", artist.getLastName());
+        session.setAttribute("phoneNumber", artist.getPhoneNumber());
+        session.setAttribute("shop", artist.getShop());
         return "redirect:/profilePage";
+        }
     }
     
 	@GetMapping("/artistRegistration")
@@ -60,14 +65,14 @@ public class ArtistController {
 	            return "ArtistRegistration.jsp";
 	        }
 	        session.setAttribute("artist_id", newArtist.getId());
-	        return "redirect:/shopInfo";
+	        return "redirect:/profilePage";
 	    }
 	
-	@GetMapping("/shopInfo")
-	public String artistInfo(Model model) {
-		model.addAttribute("newShop", new Shop());
-		return "ShopInfo.jsp";
-	}
+//	@GetMapping("/shopInfo")
+//	public String artistInfo(Model model) {
+//		model.addAttribute("newShop", new Shop());
+//		return "ShopInfo.jsp";
+//	}
 		
 	
 	@PostMapping("/shopInfo")
@@ -76,17 +81,17 @@ public class ArtistController {
 		homeServ.registerShop(newShop, result);
 	    if(result.hasErrors()) {
 	        model.addAttribute("newShop", new Shop());
-	        return "ShopInfo.jsp";
+	        return "ArtistRegistration.jsp";
 	       }
 	       session.setAttribute("shop_id", newShop.getId());
-	       return "redirect:/artistStyle";
+	       return "redirect:/profilePage";
 	}
 	
-	@GetMapping("/artistStyle")
-	public String artistStyle(Model model) {
-		model.addAttribute("newStyle", new Style());
-		return "ArtistStyle.jsp";
-	}
+//	@GetMapping("/artistStyle")
+//	public String artistStyle(Model model) {
+//		model.addAttribute("newStyle", new Style());
+//		return "ArtistStyle.jsp";
+//	}
 	
 	@PostMapping("/artistStyle")
 	public String registerStyle(@Valid @ModelAttribute("newStyle") Style newStyle, 
@@ -94,7 +99,7 @@ public class ArtistController {
 		homeServ.saveStyle(newStyle);
 	    if(result.hasErrors()) {
 	        model.addAttribute("newStyle", new Style());
-	        return "ArtistStyle.jsp";
+	        return "ArtistRegistration.jsp";
 	       }
 	       session.setAttribute("style_id", newStyle.getId());
 	       return "redirect:/profilePage";

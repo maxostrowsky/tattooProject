@@ -67,30 +67,6 @@ public class Artist {
 	@JoinColumn(name="shop_id")
 	private Shop shop;
 	
-	
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
-	public Shop getShop() {
-		return shop;
-	}
-
-	public void setShop(Shop shop) {
-		this.shop = shop;
-	}
-
-	public List<Style> getStyle() {
-		return style;
-	}
-
-	public void setStyle(List<Style> style) {
-		this.style = style;
-	}
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
@@ -117,6 +93,32 @@ public class Artist {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
+
+	
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	
+	public Shop getShop() {
+		return shop;
+	}
+	
+	public void setShop(Shop shop) {
+		this.shop = shop;
+	}
+	
+	public List<Style> getStyle() {
+		return style;
+	}
+	
+	public void setStyle(List<Style> style) {
+		this.style = style;
+	}
+	
 
 	public Long getId() {
 		return id;

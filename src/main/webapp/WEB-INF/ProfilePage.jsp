@@ -2,7 +2,6 @@
    pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page isErrorPage="true" %>  
 <!DOCTYPE html>
 <html>
@@ -15,10 +14,15 @@
 <body>
     <div class="container">
         <div class="rightSide">
-            <h1>${ artists.firstName }${ artist.lastName }</h1>
-            <h2>${ artists.shop.name }</h2>
-            <h3>${ shop.Address }</h3>
-            <p>Cell: ${ artist.phoneNumber }</p>
+
+
+
+            <h1>${ firstName }</h1>
+            <h1>${ lastName }</h1>
+            <h2>${ shop }</h2>
+            <h3>${ address }</h3>
+            <p>Cell: ${ phoneNumber }</p>
+
             <h3>Specializes in:</h3>
             <c:forEach var="talent" items="${ artist.style }">
                 <p>-
@@ -30,7 +34,7 @@
             <div class="firstRow">
                 <p>${ artist.shop.address }</p>
                 <a href="/dashboard">Dashboard</a>
-                <a href="/">Logout</a>
+                <a href="/logout">Logout</a>
             </div>
             <div class="secondRow">
                 <img src="" alt="ShopMap">
