@@ -58,7 +58,7 @@ public class ArtistController {
 	
 	@PostMapping("/artistRegistration")
 	  public String registerArtist(@Valid @ModelAttribute("newArtist") Artist newArtist, 
-	            BindingResult result, Model model, HttpSession session) {
+			  BindingResult result, Model model, HttpSession session) {
 	        homeServ.registerArtist(newArtist, result);
 	        if(result.hasErrors()) {
 	            model.addAttribute("newArtist", new Artist());
@@ -68,11 +68,11 @@ public class ArtistController {
 	        return "redirect:/profilePage";
 	    }
 	
-//	@GetMapping("/shopInfo")
-//	public String artistInfo(Model model) {
-//		model.addAttribute("newShop", new Shop());
-//		return "ShopInfo.jsp";
-//	}
+	@GetMapping("/shopInfo")
+	public String artistInfo(Model model) {
+		model.addAttribute("newShop", new Shop());
+		return "ShopInfo.jsp";
+	}
 		
 	
 	@PostMapping("/shopInfo")
@@ -87,11 +87,11 @@ public class ArtistController {
 	       return "redirect:/profilePage";
 	}
 	
-//	@GetMapping("/artistStyle")
-//	public String artistStyle(Model model) {
-//		model.addAttribute("newStyle", new Style());
-//		return "ArtistStyle.jsp";
-//	}
+	@GetMapping("/artistStyle")
+	public String artistStyle(Model model) {
+		model.addAttribute("newStyle", new Style());
+		return "ArtistStyle.jsp";
+	}
 	
 	@PostMapping("/artistStyle")
 	public String registerStyle(@Valid @ModelAttribute("newStyle") Style newStyle, 
@@ -108,9 +108,8 @@ public class ArtistController {
 	@GetMapping("/profilePage")
 	public String profilePage(String email, Model model, HttpSession session) {
 		if(session.getAttribute("artist_id")==null) {
-			return"redirect:/artistStyle";
+			return"redirect:/artistLogin";
 		}
-		System.out.println(email);
 		Artist artist = homeServ.oneArtist(email);
 		model.addAttribute("artist", artist);
 		return "ProfilePage.jsp";
